@@ -1,1 +1,1 @@
-# React-Reduc-project
+# React-Redux-project
