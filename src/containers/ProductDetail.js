@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useDispatch, useSelector } from "react-redux"
 import { selectedProduct, removeSelectedProduct } from '../redux/actions/productActions';
 import 'semantic-ui-css/semantic.min.css'
+import LoadingLottie from '../LoadingLottie';
 const ProductDetail = () => {
     const product = useSelector(state => state.product),
         { productId } = useParams(),//si collega al path e prende la parte con i ":" /product/:productId
@@ -23,7 +24,7 @@ const ProductDetail = () => {
     return (
         <div className="ui grid container" style={{ marginTop: "5%" }}>
             {Object.keys(product).length === 0 ? (
-                <div>...Loading</div>
+                <div style={{ margin: "0 auto" }}><LoadingLottie /></div>
             ) : (
                 <div className="ui placeholder segment" style={{ margin: "0 auto", width: "85%" }}>
                     <div className="ui two column stackable center aligned grid">

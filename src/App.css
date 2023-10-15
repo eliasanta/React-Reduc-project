@@ -43,4 +43,10 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
   z-index: 1000; 
 }
+.cardView{
+ display:flex !important;
+ flex-direction: column !important;
+ align-items: center !important;
+ justify-content: space-between !important;
+}
 

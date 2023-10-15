@@ -16,10 +16,10 @@ const ProductComponent = () => {
                         <div className="custom-image-container">
                             <Image src={image} alt={title} className="custom-image" />
                         </div>
-                        <Card.Content>
+                        <Card.Content className="cardView">
                             <Card.Header>{title}</Card.Header>
                             <Card.Meta>$ {price}</Card.Meta>
-                            <Card.Description>{category}</Card.Description>
+                            <Card.Description  >{category}</Card.Description>
                         </Card.Content>
                     </Card>
                 </Link>
