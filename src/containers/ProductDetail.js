@@ -2,9 +2,10 @@ import React, { useEffect } from 'react';
 import { useParams } from "react-router-dom";
 import axios from 'axios';
 import { useDispatch, useSelector } from "react-redux"
-import { selectedProduct, removeSelectedProduct } from '../redux/actions/productActions';
+import { selectedProduct, removeSelectedProduct, addToCart, removeFromCart } from '../redux/actions/productActions';
 import 'semantic-ui-css/semantic.min.css'
 import LoadingLottie from '../LoadingLottie';
+
 const ProductDetail = () => {
     const product = useSelector(state => state.product),
         { productId } = useParams(),//si collega al path e prende la parte con i ":" /product/:productId
@@ -21,6 +22,16 @@ const ProductDetail = () => {
             dispatch(removeSelectedProduct());
         };
     }, [productId]);
+    // const selectedProduct2 = useSelector(state => console.log(state));
+    const handleAddToCart = () => {
+        dispatch(addToCart({ ...product }));
+    },
+        handleRemoveFromCart = () => {
+            dispatch(removeFromCart({ ...product }));
+        };
+
+
+    const cart = useSelector(state => state.cart);
     return (
         <div className="ui grid container" style={{ marginTop: "5%" }}>
             {Object.keys(product).length === 0 ? (
@@ -40,11 +51,17 @@ const ProductDetail = () => {
                                 </h2>
                                 <h3 className="ui brown block header">{category}</h3>
                                 <p>{description}</p>
-                                <div className="ui vertical animated button blue" tabIndex="0">
+                                <div className="ui vertical animated button blue" onClick={handleAddToCart} tabIndex="0">
                                     <div className="hidden content">
                                         <i className="shop icon"></i>
                                     </div>
-                                    <div className="visible content">Add to Cart</div>
+                                    <div className="visible content" >Add to Cart</div>
+                                </div>
+                                <div className="ui vertical animated button red" onClick={handleRemoveFromCart} tabIndex="0">
+                                    <div className="hidden content">
+                                        <i className="shop icon"></i>
+                                    </div>
+                                    <div className="visible content" >Remove from cart</div>
                                 </div>
                             </div>
                         </div>
