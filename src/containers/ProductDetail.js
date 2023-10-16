@@ -57,7 +57,7 @@ const ProductDetail = () => {
                                     </div>
                                     <div className="visible content" >Add to Cart</div>
                                 </div>
-                                <div className="ui vertical animated button red" onClick={handleRemoveFromCart} tabIndex="0">
+                                <div className="ui vertical animated button red" style={{ marginTop: "10px" }} onClick={handleRemoveFromCart} tabIndex="0">
                                     <div className="hidden content">
                                         <i className="shop icon"></i>
                                     </div>

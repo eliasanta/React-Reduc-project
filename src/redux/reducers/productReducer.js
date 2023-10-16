@@ -24,12 +24,29 @@ export const selectedProductReducer = (state = {}, { type, payload }) => {
 }
 // reducers.js
 export const cartReducer = (state = [], { type, payload }) => {
-    console.log(type, payload)
     switch (type) {
         case ActionTypes.ADD_TO_CART:
-            return [...state, payload];  // Aggiungi il prodotto al carrello
+            const existingProduct = state.find(item => item.id === payload.id);
+            if (existingProduct) {
+                // Se il prodotto esiste già nel carrello, aggiorna solo la quantità
+                return state.map(item =>
+                    item.id === payload.id ? { ...item, quantity: item.quantity + 1 } : item
+                );
+            } else {
+                // Se il prodotto non esiste nel carrello, aggiungi il prodotto
+                return [...state, { ...payload, quantity: 1 }];
+            }
+
         case ActionTypes.REMOVE_FROM_CART:
-            return state.filter(item => item.id !== payload.id);  // Rimuovi il prodotto dal carrello
+            const updatedCart = state.map(item =>
+                item.id === payload.id
+                    ? item.quantity > 1
+                        ? { ...item, quantity: item.quantity - 1 }
+                        : null
+                    : item
+            ).filter(item => item !== null);
+
+            return updatedCart;
         default:
             return state;
     }
