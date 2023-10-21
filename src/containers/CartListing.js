@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux"
 import { Card, Image, Button } from 'semantic-ui-react';
 import { removeFromCart, moreInCart, addInCart, lessInCart } from '../redux/actions/productActions';
+import { Link } from 'react-router-dom';
 
 import 'semantic-ui-css/semantic.min.css'
 
@@ -25,12 +26,14 @@ const CartListing = () => {
         const { id, image, price, quantity, title } = product
         return (
             <Card key={id} className="full-width-card " style={{ maxWidth: "90%", padding: "20px", margin: "10px auto" }}>
-                <div className="card-content" style={{ display: "flex", justifyContent: "space-around", alignItems: "center" }}>
-                    <Image src={image} size="tiny" className="card-image" />
+                <div className="card-content card-cart" style={{ display: "flex", justifyContent: "space-around", alignItems: "center" }}>
+                    <Link to={`/product/${id}`} >
+                        <Image src={image} size="small" className="card-image" />
+                    </Link>
                     <div className="card-details">
-                        <Card.Header>{title}</Card.Header>
-                        <Card.Meta>Price: ${price}</Card.Meta>
-                        <Card.Meta><strong>Quantity:</strong> {quantity}</Card.Meta>
+                        <Card.Header style={{ margin: "5px" }}>{title}</Card.Header>
+                        <Card.Meta style={{ margin: "5px" }}>Price: ${price}</Card.Meta>
+                        <Card.Meta style={{ margin: "5px" }}><strong>Quantity:</strong> {quantity}</Card.Meta>
                         <Button.Group>
                             <Button icon="minus" onClick={() => handleRemoveFromCart(id)} />
                             <Button.Or text={product.quantity} />

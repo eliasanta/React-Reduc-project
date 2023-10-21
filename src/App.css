@@ -54,15 +54,29 @@
   justify-content: space-between !important;
 }
 
+.card-cart {
+  display: "flex"!important;
+  justify-content: "space-around";
+  align-items: "center"!important;
+}
+
 @media (max-width: 767px) {
 
   /* Regola il valore 767px in base alle tue esigenze */
   .mobile-only {
-    max-width: 250px !important;
+    max-width: 200px !important;
   }
-  .center-image{
-    display: flex!important;
-    align-items: center!important;
-    justify-content: center!important;
+
+  .center-image {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .card-cart {
+    justify-content: space-between!important;
+  }
+  .card-image{
+    max-width: 130px !important;
   }
 }
