@@ -30,8 +30,6 @@ const ProductDetail = () => {
             dispatch(removeFromCart({ ...product }));
         };
 
-
-    const cart = useSelector(state => state.cart);
     return (
         <div className="ui grid container" style={{ marginTop: "5%" }}>
             {Object.keys(product).length === 0 ? (
@@ -41,15 +39,15 @@ const ProductDetail = () => {
                     <div className="ui two column stackable center aligned grid">
                         <div className="ui vertical divider"></div>
                         <div className="middle aligned row">
-                            <div className="column lp">
-                                <img className="ui fluid image" src={image} />
+                            <div className="column lp center-image">
+                                <img className="ui fluid image mobile-only" src={image} />
                             </div>
                             <div className="column rp">
-                                <h1>{title}</h1>
+                                <h3>{title}</h3>
                                 <h2>
                                     <a className="ui teal tag label">${price}</a>
                                 </h2>
-                                <h3 className="ui brown block header">{category}</h3>
+                                <h4 className="ui block small">{category}</h4>
                                 <p>{description}</p>
                                 <div className="ui vertical animated button blue" onClick={handleAddToCart} tabIndex="0">
                                     <div className="hidden content">

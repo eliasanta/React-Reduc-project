@@ -24,7 +24,7 @@ const CartListing = () => {
     const renderCart = cart.map((product, index) => {
         const { id, image, price, quantity, title } = product
         return (
-            <Card key={id} className="full-width-card" style={{ maxWidth: "80%", padding: "20px", margin: "10px auto" }}>
+            <Card key={id} className="full-width-card " style={{ maxWidth: "90%", padding: "20px", margin: "10px auto" }}>
                 <div className="card-content" style={{ display: "flex", justifyContent: "space-around", alignItems: "center" }}>
                     <Image src={image} size="tiny" className="card-image" />
                     <div className="card-details">
@@ -47,6 +47,7 @@ const CartListing = () => {
             <Card.Group itemsPerRow={1} style={{ margin: "3% 2%" }}>
                 {renderCart}
             </Card.Group>
+            <Button>PAY</Button>
 
         </div>
     )
