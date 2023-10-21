@@ -9,7 +9,7 @@ const CartListing = () => {
 
     const cart = useSelector(state => state.cart);
     const totalPrice = cart.reduce((accumulator, product) => {//inizializzo accumulator a zero e product rappresenta ogni oggetto del mio array
-        return accumulator + product.price;
+        return accumulator + product.price * product.quantity;
     }, 0);
     const dispatch = useDispatch();
 
@@ -43,7 +43,7 @@ const CartListing = () => {
     })
     return (
         <div>
-            <h2 style={{ marginTop: "20px" }}>Total {totalPrice}</h2>
+            <h2 style={{ marginTop: "20px" }}>Total {totalPrice.toFixed(2)} $</h2>
             <Card.Group itemsPerRow={1} style={{ margin: "3% 2%" }}>
                 {renderCart}
             </Card.Group>
