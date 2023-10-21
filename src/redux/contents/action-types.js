@@ -4,5 +4,7 @@ export const ActionTypes = {
     REMOVE_SELECTED_PRODUCT: "REMOVE_SELECTED_PRODUCT",
     ADD_TO_CART: "ADD_TO_CART",
     REMOVE_FROM_CART: "REMOVE_FROM_CART",
+    MORE_IN_CART: "MORE_IN_CART",
+    LESS_IN_CART: "LESS_IN_CART",
 }
 //mi salvo i nomi delle actions 

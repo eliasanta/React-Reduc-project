@@ -32,3 +32,16 @@ export const removeFromCart = (product) => {
         payload: product
     };
 };
+export const moreInCart = (product) => {
+
+    return {
+        type: ActionTypes.MORE_IN_CART,
+        payload: product
+    };
+};
+export const lessInCart = (product) => {
+    return {
+        type: ActionTypes.LESS_IN_CART,
+        payload: product
+    };
+};

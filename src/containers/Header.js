@@ -21,6 +21,7 @@ const Header = () => {
                     <Label color='teal'>
                         {totalQuantity}
                     </Label>
+                    
                 </div>
             </Link>
         </div>

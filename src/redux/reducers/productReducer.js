@@ -36,6 +36,19 @@ export const cartReducer = (state = [], { type, payload }) => {
                 // Se il prodotto non esiste nel carrello, aggiungi il prodotto
                 return [...state, { ...payload, quantity: 1 }];
             }
+        case ActionTypes.MORE_IN_CART:
+            // Trova il prodotto con lo stesso id e aggiorna la quantità
+            return state.map(item => (item.id === payload ? { ...item, quantity: item.quantity + 1 } : item));
+
+        case ActionTypes.LESS_IN_CART:
+            // Trova il prodotto con lo stesso id e aggiorna la quantità
+            return state.map(item => {
+                if (item.id === payload && item.quantity > 0) {
+                    return { ...item, quantity: item.quantity - 1 };
+                }
+                return item; // Restituisci l'elemento invariato se la quantità è già zero
+            });
+
 
         case ActionTypes.REMOVE_FROM_CART:
             const updatedCart = state.map(item =>
