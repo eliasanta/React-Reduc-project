@@ -6,5 +6,6 @@ export const ActionTypes = {
     REMOVE_FROM_CART: "REMOVE_FROM_CART",
     MORE_IN_CART: "MORE_IN_CART",
     LESS_IN_CART: "LESS_IN_CART",
+    DELETE_FROM_CART: "DELETE_FROM_CART",
 }
 //mi salvo i nomi delle actions 

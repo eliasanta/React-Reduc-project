@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux"
-import { Card, Image, Button } from 'semantic-ui-react';
-import { removeFromCart, moreInCart, addInCart, lessInCart } from '../redux/actions/productActions';
+import { Card, Image, Button, Icon } from 'semantic-ui-react';
+import { removeFromCart, moreInCart, addInCart, lessInCart, deleteFromCart } from '../redux/actions/productActions';
 import { Link } from 'react-router-dom';
 
 import 'semantic-ui-css/semantic.min.css'
@@ -16,10 +16,13 @@ const CartListing = () => {
 
     const handleAddToCart = (productId) => {
         dispatch(moreInCart(productId));
-    };
+    },
+        handleLessToCart = (productId) => {
+            dispatch(lessInCart(productId));
+        };
 
     const handleRemoveFromCart = (productId) => {
-        dispatch(lessInCart(productId));
+        dispatch(deleteFromCart(productId));
     };
 
     const renderCart = cart.map((product, index) => {
@@ -35,10 +38,15 @@ const CartListing = () => {
                         <Card.Meta style={{ margin: "5px" }}>Price: ${price}</Card.Meta>
                         <Card.Meta style={{ margin: "5px" }}><strong>Quantity:</strong> {quantity}</Card.Meta>
                         <Button.Group>
-                            <Button icon="minus" onClick={() => handleRemoveFromCart(id)} />
+                            <Button icon="minus" onClick={() => handleLessToCart(id)} />
                             <Button.Or text={product.quantity} />
                             <Button icon="plus" onClick={() => handleAddToCart(id)} />
                         </Button.Group>
+                        <div style={{ marginTop: "10px" }}>
+                            <Button color="red" onClick={() => handleRemoveFromCart(id)}>
+                                <Icon name="trash" /> Delete
+                            </Button>
+                        </div>
                     </div>
                 </div>
             </Card >

@@ -61,8 +61,6 @@
 }
 
 @media (max-width: 767px) {
-
-  /* Regola il valore 767px in base alle tue esigenze */
   .mobile-only {
     max-width: 200px !important;
   }

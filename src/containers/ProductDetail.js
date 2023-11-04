@@ -7,6 +7,9 @@ import 'semantic-ui-css/semantic.min.css'
 import LoadingLottie from '../LoadingLottie';
 
 const ProductDetail = () => {
+    //In questo modo, il componente è in grado di ottenere e visualizzare i dettagli
+    // del prodotto corrispondente all'productId estratto dall'URL. Il valore di productId dal percorso 
+    //dell'URL è ciò che determina quale prodotto verrà recuperato e visualizzato.
     const product = useSelector(state => state.product),
         { productId } = useParams(),//si collega al path e prende la parte con i ":" /product/:productId
         { image, title, price, category, description } = product,
@@ -16,6 +19,7 @@ const ProductDetail = () => {
                 .catch(err => console.log(err));
             dispatch(selectedProduct(response.data))
         }
+    console.log(product)
     useEffect(() => {
         if (productId && productId !== "") fetchProductDetail(productId);
         return () => {

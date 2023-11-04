@@ -24,6 +24,9 @@ export const selectedProductReducer = (state = {}, { type, payload }) => {
 }
 // reducers.js
 export const cartReducer = (state = [], { type, payload }) => {
+    console.log(state)
+    console.log(type)
+    console.log(payload)
     switch (type) {
         case ActionTypes.ADD_TO_CART:
             const existingProduct = state.find(item => item.id === payload.id);
@@ -49,6 +52,8 @@ export const cartReducer = (state = [], { type, payload }) => {
                 return item; // Restituisci l'elemento invariato se la quantità è già zero
             });
 
+        case ActionTypes.DELETE_FROM_CART:
+            return state.filter(item => item.id !== payload);
 
         case ActionTypes.REMOVE_FROM_CART:
             const updatedCart = state.map(item =>
