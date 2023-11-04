@@ -19,7 +19,7 @@ const ProductDetail = () => {
                 .catch(err => console.log(err));
             dispatch(selectedProduct(response.data))
         }
-    console.log(product)
+
     useEffect(() => {
         if (productId && productId !== "") fetchProductDetail(productId);
         return () => {

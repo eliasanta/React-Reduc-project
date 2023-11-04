@@ -24,9 +24,10 @@ export const selectedProductReducer = (state = {}, { type, payload }) => {
 }
 // reducers.js
 export const cartReducer = (state = [], { type, payload }) => {
-    console.log(state)
-    console.log(type)
-    console.log(payload)
+    //type è il tipo di action invocata
+    //payload è il dato che viene passato dalla action, puo essere un ID o altro
+    //state è un array vuoto di partenza dove andare a mettere i dati gestiti dal reducer
+
     switch (type) {
         case ActionTypes.ADD_TO_CART:
             const existingProduct = state.find(item => item.id === payload.id);
@@ -53,6 +54,7 @@ export const cartReducer = (state = [], { type, payload }) => {
             });
 
         case ActionTypes.DELETE_FROM_CART:
+            //ritorno l'array con tutti gli item che hanno l'id diverso da quello passato , si cancella quindi l'elelemento con l'id passato
             return state.filter(item => item.id !== payload);
 
         case ActionTypes.REMOVE_FROM_CART:

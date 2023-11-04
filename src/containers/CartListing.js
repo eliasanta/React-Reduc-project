@@ -58,7 +58,9 @@ const CartListing = () => {
             <Card.Group itemsPerRow={1} style={{ margin: "3% 2%" }}>
                 {renderCart}
             </Card.Group>
-            <Button>PAY</Button>
+            <Link to={`/pay`} >
+                <Button>PAY</Button>
+            </Link>
 
         </div>
     )
